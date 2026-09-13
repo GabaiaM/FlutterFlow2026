@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>bkp01 v01</string>
+	<string>Projeto FlutterFlow ADS1</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>bkp01 v01</string>
+	<string>Projeto FlutterFlow ADS1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -26,10 +26,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>bkp01v01.com</string>
+        <string>projetoflutterflowads1.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>bkp01v01</string>
+        <string>projetoflutterflowads1</string>
         </array>
         </dict>
     </array>

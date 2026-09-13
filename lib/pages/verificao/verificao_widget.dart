@@ -276,8 +276,8 @@ class _VerificaoWidgetState extends State<VerificaoWidget>
                                       ),
                                     ),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        context.safePop();
                                       },
                                       text: 'Verificar',
                                       options: FFButtonOptions(

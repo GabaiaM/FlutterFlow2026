@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'busca_cep_model.dart';
 export 'busca_cep_model.dart';
@@ -29,11 +28,6 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BuscaCepModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      context.pushNamed(HomePageWidget.routeName);
-    });
 
     _model.tfCepTextController ??= TextEditingController();
     _model.tfCepFocusNode ??= FocusNode();

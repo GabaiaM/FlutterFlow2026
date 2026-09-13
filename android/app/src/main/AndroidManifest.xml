@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.bkp01v01"
+    package="com.mycompany.projetoflutterflowads1"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
-        android:label="bkp01 v01"
+        android:label="Projeto FlutterFlow ADS1"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="bkp01v01" android:host="bkp01v01.com" />
+                <data android:scheme="projetoflutterflowads1" android:host="projetoflutterflowads1.com" />
             </intent-filter>
 
         </activity>
