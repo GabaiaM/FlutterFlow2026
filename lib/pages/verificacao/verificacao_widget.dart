@@ -5,29 +5,29 @@ import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'verificao_model.dart';
-export 'verificao_model.dart';
+import 'verificacao_model.dart';
+export 'verificacao_model.dart';
 
-class VerificaoWidget extends StatefulWidget {
-  const VerificaoWidget({super.key});
+class VerificacaoWidget extends StatefulWidget {
+  const VerificacaoWidget({super.key});
 
-  static String routeName = 'Verificao';
-  static String routePath = '/verificao';
+  static String routeName = 'Verificacao';
+  static String routePath = '/verificacao';
 
   @override
-  State<VerificaoWidget> createState() => _VerificaoWidgetState();
+  State<VerificacaoWidget> createState() => _VerificacaoWidgetState();
 }
 
-class _VerificaoWidgetState extends State<VerificaoWidget>
+class _VerificacaoWidgetState extends State<VerificacaoWidget>
     with TickerProviderStateMixin {
-  late VerificaoModel _model;
+  late VerificacaoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => VerificaoModel());
+    _model = createModel(context, () => VerificacaoModel());
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -343,8 +343,8 @@ class _VerificaoWidgetState extends State<VerificaoWidget>
                     ),
                     child: Image.asset(
                       'assets/images/splah_icone.png',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 120.0,
+                      height: 120.0,
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -237,8 +237,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 decoration: BoxDecoration(),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxmb29kfGVufDB8fHx8MTc4OTI3NzAxMXww&ixlib=rb-4.1.0&q=80&w=1080',
+                  child: Image.asset(
+                    'assets/images/splah_icone.png',
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.cover,
@@ -254,7 +254,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       width: double.infinity,
                       height: 325.07,
                       decoration: BoxDecoration(
-                        color: Color(0xFFF8F5EF),
+                        color: Color(0xFFE9E3DD),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Column(
@@ -619,7 +619,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 40.0, 0.0, 0.0),
+                                          0.0, 30.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -628,7 +628,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           FFButtonWidget(
                                             onPressed: () async {
                                               context.pushNamed(
-                                                  VerificaoWidget.routeName);
+                                                  VerificacaoWidget.routeName);
                                             },
                                             text: 'Entrar',
                                             options: FFButtonOptions(
@@ -789,8 +789,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ),
                           child: Image.asset(
                             'assets/images/splah_icone.png',
-                            width: 200.0,
-                            height: 200.0,
+                            width: 120.0,
+                            height: 120.0,
                             fit: BoxFit.cover,
                           ),
                         ),

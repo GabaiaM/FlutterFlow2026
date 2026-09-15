@@ -35,14 +35,17 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
     _model.tfRuaTextController ??= TextEditingController();
     _model.tfRuaFocusNode ??= FocusNode();
 
+    _model.tfNumeroTextController ??= TextEditingController();
+    _model.tfNumeroFocusNode ??= FocusNode();
+
     _model.tfBairroTextController ??= TextEditingController();
     _model.tfBairroFocusNode ??= FocusNode();
 
-    _model.tfCidadeTextController ??= TextEditingController();
-    _model.tfCidadeFocusNode ??= FocusNode();
+    _model.tfComplTextController ??= TextEditingController();
+    _model.tfComplFocusNode ??= FocusNode();
 
-    _model.tfUfTextController ??= TextEditingController();
-    _model.tfUfFocusNode ??= FocusNode();
+    _model.tfRefTextController ??= TextEditingController();
+    _model.tfRefFocusNode ??= FocusNode();
   }
 
   @override
@@ -97,7 +100,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
@@ -109,7 +112,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 10.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -131,39 +134,69 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                         '_model.tfCepTextController',
                         Duration(milliseconds: 2000),
                         () async {
+                          var _shouldSetState = false;
                           safeSetState(() {
                             _model.tfCepTextController?.text =
                                 _model.tfCepTextController.text;
                           });
-                          _model.apiResult6s1 = await BuscapCepCall.call(
+                          _model.respDaConsultaViaCep =
+                              await BuscapCepCall.call(
                             cep: _model.tfCepTextController.text,
                           );
 
-                          safeSetState(() {
-                            _model.tfRuaTextController?.text =
-                                BuscapCepCall.rua(
-                              (_model.apiResult6s1?.jsonBody ?? ''),
-                            )!;
-                          });
-                          safeSetState(() {
-                            _model.tfBairroTextController?.text =
-                                BuscapCepCall.bairro(
-                              (_model.apiResult6s1?.jsonBody ?? ''),
-                            )!;
-                          });
-                          safeSetState(() {
-                            _model.tfCidadeTextController?.text =
-                                BuscapCepCall.cidade(
-                              (_model.apiResult6s1?.jsonBody ?? ''),
-                            )!;
-                          });
-                          safeSetState(() {
-                            _model.tfUfTextController?.text = BuscapCepCall.uf(
-                              (_model.apiResult6s1?.jsonBody ?? ''),
-                            )!;
-                          });
+                          _shouldSetState = true;
+                          if ((_model.respDaConsultaViaCep?.succeeded ??
+                              true)) {
+                            safeSetState(() {
+                              _model.tfRuaTextController?.text =
+                                  BuscapCepCall.rua(
+                                (_model.respDaConsultaViaCep?.jsonBody ?? ''),
+                              )!;
+                            });
+                            safeSetState(() {
+                              _model.tfBairroTextController?.text =
+                                  BuscapCepCall.bairro(
+                                (_model.respDaConsultaViaCep?.jsonBody ?? ''),
+                              )!;
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'CEP Válido!',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0xC8607744),
+                              ),
+                            );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('CEP inválido!'),
+                                  content: Text(
+                                      'Por favor, cadastre novamente seu endereço.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          }
 
-                          safeSetState(() {});
+                          if (_shouldSetState) safeSetState(() {});
                         },
                       ),
                       autofocus: false,
@@ -171,7 +204,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Cep',
+                        labelText: 'CEP',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   font: GoogleFonts.inter(
@@ -286,7 +319,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -309,7 +342,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Rua',
+                        labelText: 'Logradouro',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   font: GoogleFonts.inter(
@@ -424,7 +457,125 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0),
+                      bottomLeft: Radius.circular(12.0),
+                      bottomRight: Radius.circular(12.0),
+                    ),
+                  ),
+                  child: Container(
+                    width: 200.0,
+                    child: TextFormField(
+                      controller: _model.tfNumeroTextController,
+                      focusNode: _model.tfNumeroFocusNode,
+                      autofocus: false,
+                      enabled: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        labelText: 'Número',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        filled: true,
+                        fillColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                      cursorColor: FlutterFlowTheme.of(context).primaryText,
+                      enableInteractiveSelection: true,
+                      validator: _model.tfNumeroTextControllerValidator
+                          .asValidator(context),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -542,7 +693,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -558,14 +709,14 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.tfCidadeTextController,
-                      focusNode: _model.tfCidadeFocusNode,
+                      controller: _model.tfComplTextController,
+                      focusNode: _model.tfComplFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Cidade',
+                        labelText: 'Complemento',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   font: GoogleFonts.inter(
@@ -653,14 +804,14 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator: _model.tfCidadeTextControllerValidator
+                      validator: _model.tfComplTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 5.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -676,14 +827,14 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.tfUfTextController,
-                      focusNode: _model.tfUfFocusNode,
+                      controller: _model.tfRefTextController,
+                      focusNode: _model.tfRefFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'UF',
+                        labelText: 'Referência',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   font: GoogleFonts.inter(
@@ -771,17 +922,17 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator: _model.tfUfTextControllerValidator
+                      validator: _model.tfRefTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 2.0),
                 child: Container(
-                  width: 180.0,
-                  height: 50.0,
+                  width: 150.0,
+                  height: 45.0,
                   decoration: BoxDecoration(
                     color: Color(0xFF607744),
                     borderRadius: BorderRadius.only(
@@ -829,29 +980,24 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 20.0, 20.0),
                 child: Container(
-                  width: 120.0,
-                  height: 120.0,
+                  width: 80.0,
+                  height: 80.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12.0),
-                      topRight: Radius.circular(12.0),
-                      bottomLeft: Radius.circular(12.0),
-                      bottomRight: Radius.circular(12.0),
-                    ),
+                    borderRadius: BorderRadius.only(),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60.0),
-                      topRight: Radius.circular(60.0),
-                      bottomLeft: Radius.circular(60.0),
-                      bottomRight: Radius.circular(60.0),
+                      topLeft: Radius.circular(40.0),
+                      topRight: Radius.circular(40.0),
+                      bottomLeft: Radius.circular(40.0),
+                      bottomRight: Radius.circular(40.0),
                     ),
                     child: Image.asset(
                       'assets/images/splah_icone.png',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 80.0,
+                      height: 80.0,
                       fit: BoxFit.cover,
                     ),
                   ),

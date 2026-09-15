@@ -8,24 +8,6 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class ViaCEPCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'ViaCEP',
-      apiUrl: 'viacep.com.br/ws/01001000/json/',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-}
-
 class BuscapCepCall {
   static Future<ApiCallResponse> call({
     String? cep = '',

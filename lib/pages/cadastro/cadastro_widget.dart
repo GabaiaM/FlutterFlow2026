@@ -89,7 +89,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 55.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -112,7 +112,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Nome completo:',
+                        labelText: 'Nome completo',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   font: GoogleFonts.inter(
@@ -207,7 +207,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -230,7 +230,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'E-mail:',
+                        labelText: 'E-mail',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   font: GoogleFonts.inter(
@@ -325,7 +325,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -348,7 +348,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'CPF:',
+                        labelText: 'CPF',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   font: GoogleFonts.inter(
@@ -443,7 +443,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -466,7 +466,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Celular:',
+                        labelText: 'Celular',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   font: GoogleFonts.inter(
@@ -561,7 +561,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 10.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -584,7 +584,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
-                        labelText: 'Senha:',
+                        labelText: 'Senha',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   font: GoogleFonts.inter(
@@ -679,7 +679,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 18.0, 10.0, 0.0),
                 child: Container(
                   width: 200.0,
                   height: 50.0,
@@ -734,29 +734,24 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
                 child: Container(
-                  width: 140.0,
-                  height: 140.0,
+                  width: 120.0,
+                  height: 120.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12.0),
-                      topRight: Radius.circular(12.0),
-                      bottomLeft: Radius.circular(12.0),
-                      bottomRight: Radius.circular(12.0),
-                    ),
+                    borderRadius: BorderRadius.only(),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70.0),
-                      topRight: Radius.circular(70.0),
-                      bottomLeft: Radius.circular(70.0),
-                      bottomRight: Radius.circular(70.0),
+                      topLeft: Radius.circular(60.0),
+                      topRight: Radius.circular(60.0),
+                      bottomLeft: Radius.circular(60.0),
+                      bottomRight: Radius.circular(60.0),
                     ),
                     child: Image.asset(
                       'assets/images/splah_icone.png',
-                      width: 200.0,
-                      height: 215.3,
+                      width: 120.0,
+                      height: 120.0,
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -12,23 +12,27 @@ class BuscaCepModel extends FlutterFlowModel<BuscaCepWidget> {
   TextEditingController? tfCepTextController;
   String? Function(BuildContext, String?)? tfCepTextControllerValidator;
   // Stores action output result for [Backend Call - API (BuscapCep)] action in TF_CEP widget.
-  ApiCallResponse? apiResult6s1;
+  ApiCallResponse? respDaConsultaViaCep;
   // State field(s) for TF_RUA widget.
   FocusNode? tfRuaFocusNode;
   TextEditingController? tfRuaTextController;
   String? Function(BuildContext, String?)? tfRuaTextControllerValidator;
+  // State field(s) for TF_NUMERO widget.
+  FocusNode? tfNumeroFocusNode;
+  TextEditingController? tfNumeroTextController;
+  String? Function(BuildContext, String?)? tfNumeroTextControllerValidator;
   // State field(s) for TF_BAIRRO widget.
   FocusNode? tfBairroFocusNode;
   TextEditingController? tfBairroTextController;
   String? Function(BuildContext, String?)? tfBairroTextControllerValidator;
-  // State field(s) for TF_CIDADE widget.
-  FocusNode? tfCidadeFocusNode;
-  TextEditingController? tfCidadeTextController;
-  String? Function(BuildContext, String?)? tfCidadeTextControllerValidator;
-  // State field(s) for TF_UF widget.
-  FocusNode? tfUfFocusNode;
-  TextEditingController? tfUfTextController;
-  String? Function(BuildContext, String?)? tfUfTextControllerValidator;
+  // State field(s) for TF_COMPL widget.
+  FocusNode? tfComplFocusNode;
+  TextEditingController? tfComplTextController;
+  String? Function(BuildContext, String?)? tfComplTextControllerValidator;
+  // State field(s) for TF_REF widget.
+  FocusNode? tfRefFocusNode;
+  TextEditingController? tfRefTextController;
+  String? Function(BuildContext, String?)? tfRefTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -41,13 +45,16 @@ class BuscaCepModel extends FlutterFlowModel<BuscaCepWidget> {
     tfRuaFocusNode?.dispose();
     tfRuaTextController?.dispose();
 
+    tfNumeroFocusNode?.dispose();
+    tfNumeroTextController?.dispose();
+
     tfBairroFocusNode?.dispose();
     tfBairroTextController?.dispose();
 
-    tfCidadeFocusNode?.dispose();
-    tfCidadeTextController?.dispose();
+    tfComplFocusNode?.dispose();
+    tfComplTextController?.dispose();
 
-    tfUfFocusNode?.dispose();
-    tfUfTextController?.dispose();
+    tfRefFocusNode?.dispose();
+    tfRefTextController?.dispose();
   }
 }
