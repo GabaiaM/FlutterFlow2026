@@ -79,6 +79,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: VerificacaoWidget.routeName,
           path: VerificacaoWidget.routePath,
           builder: (context, params) => VerificacaoWidget(),
+        ),
+        FFRoute(
+          name: IntegrantesWidget.routeName,
+          path: IntegrantesWidget.routePath,
+          builder: (context, params) => IntegrantesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

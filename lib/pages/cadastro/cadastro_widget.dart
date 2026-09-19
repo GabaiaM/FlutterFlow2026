@@ -1,6 +1,10 @@
+import '/components/elemento_aviso_verde_widget.dart';
+import '/components/elemento_erro_c_p_f_widget.dart';
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,20 +31,20 @@ class _CadastroWidgetState extends State<CadastroWidget> {
     super.initState();
     _model = createModel(context, () => CadastroModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.tfnomeTextController ??= TextEditingController();
+    _model.tfnomeFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.tfemailTextController ??= TextEditingController();
+    _model.tfemailFocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.tfcpfTextController ??= TextEditingController();
+    _model.tfcpfFocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.tfcelularTextController ??= TextEditingController();
+    _model.tfcelularFocusNode ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.tfsenhaTextController ??= TextEditingController();
+    _model.tfsenhaFocusNode ??= FocusNode();
   }
 
   @override
@@ -81,7 +85,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
           ),
           actions: [],
           centerTitle: true,
-          elevation: 2.0,
+          elevation: 500.0,
         ),
         body: SafeArea(
           top: true,
@@ -89,7 +93,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 50.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -105,8 +109,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.textController1,
-                      focusNode: _model.textFieldFocusNode1,
+                      controller: _model.tfnomeTextController,
+                      focusNode: _model.tfnomeFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -200,8 +204,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator:
-                          _model.textController1Validator.asValidator(context),
+                      validator: _model.tfnomeTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                 ),
@@ -223,8 +227,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.textController2,
-                      focusNode: _model.textFieldFocusNode2,
+                      controller: _model.tfemailTextController,
+                      focusNode: _model.tfemailFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -318,8 +322,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator:
-                          _model.textController2Validator.asValidator(context),
+                      validator: _model.tfemailTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                 ),
@@ -341,8 +345,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.textController3,
-                      focusNode: _model.textFieldFocusNode3,
+                      controller: _model.tfcpfTextController,
+                      focusNode: _model.tfcpfFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -436,14 +440,109 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator:
-                          _model.textController3Validator.asValidator(context),
+                      validator: _model.tfcpfTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                child: Container(
+                  width: 90.0,
+                  height: 35.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0),
+                      bottomLeft: Radius.circular(12.0),
+                      bottomRight: Radius.circular(12.0),
+                    ),
+                  ),
+                  child: Builder(
+                    builder: (context) => FFButtonWidget(
+                      onPressed: () async {
+                        if (functions
+                            .validarCPF(_model.tfcpfTextController.text)) {
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(dialogContext).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: ElementoAvisoVerdeWidget(),
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(dialogContext).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: ElementoErroCPFWidget(),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                      text: 'Consultar',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF735C4D),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 50.0,
@@ -459,8 +558,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.textController4,
-                      focusNode: _model.textFieldFocusNode4,
+                      controller: _model.tfcelularTextController,
+                      focusNode: _model.tfcelularFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -554,8 +653,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator:
-                          _model.textController4Validator.asValidator(context),
+                      validator: _model.tfcelularTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                 ),
@@ -577,8 +676,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.textController5,
-                      focusNode: _model.textFieldFocusNode5,
+                      controller: _model.tfsenhaTextController,
+                      focusNode: _model.tfsenhaFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -672,8 +771,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator:
-                          _model.textController5Validator.asValidator(context),
+                      validator: _model.tfsenhaTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                 ),
@@ -741,19 +840,10 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60.0),
-                      topRight: Radius.circular(60.0),
-                      bottomLeft: Radius.circular(60.0),
-                      bottomRight: Radius.circular(60.0),
-                    ),
-                    child: Image.asset(
-                      'assets/images/splah_icone.png',
-                      width: 120.0,
-                      height: 120.0,
-                      fit: BoxFit.cover,
-                    ),
+                  child: wrapWithModel(
+                    model: _model.logoRedondaMenorModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: LogoRedondaMenorWidget(),
                   ),
                 ),
               ),

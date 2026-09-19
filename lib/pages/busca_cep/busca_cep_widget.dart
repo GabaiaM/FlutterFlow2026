@@ -1,4 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/elemento_erro_c_e_p_widget.dart';
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -125,89 +127,102 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                       bottomRight: Radius.circular(12.0),
                     ),
                   ),
-                  child: Container(
-                    width: 200.0,
-                    child: TextFormField(
-                      controller: _model.tfCepTextController,
-                      focusNode: _model.tfCepFocusNode,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        '_model.tfCepTextController',
-                        Duration(milliseconds: 2000),
-                        () async {
-                          var _shouldSetState = false;
-                          safeSetState(() {
-                            _model.tfCepTextController?.text =
-                                _model.tfCepTextController.text;
-                          });
-                          _model.respDaConsultaViaCep =
-                              await BuscapCepCall.call(
-                            cep: _model.tfCepTextController.text,
-                          );
-
-                          _shouldSetState = true;
-                          if ((_model.respDaConsultaViaCep?.succeeded ??
-                              true)) {
+                  child: Builder(
+                    builder: (context) => Container(
+                      width: 200.0,
+                      child: TextFormField(
+                        controller: _model.tfCepTextController,
+                        focusNode: _model.tfCepFocusNode,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          '_model.tfCepTextController',
+                          Duration(milliseconds: 2000),
+                          () async {
+                            var _shouldSetState = false;
                             safeSetState(() {
-                              _model.tfRuaTextController?.text =
-                                  BuscapCepCall.rua(
-                                (_model.respDaConsultaViaCep?.jsonBody ?? ''),
-                              )!;
+                              _model.tfCepTextController?.text =
+                                  _model.tfCepTextController.text;
                             });
-                            safeSetState(() {
-                              _model.tfBairroTextController?.text =
-                                  BuscapCepCall.bairro(
-                                (_model.respDaConsultaViaCep?.jsonBody ?? ''),
-                              )!;
-                            });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'CEP Válido!',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0xC8607744),
-                              ),
+                            _model.respDaConsultaViaCep =
+                                await BuscapCepCall.call(
+                              cep: _model.tfCepTextController.text,
                             );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          } else {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('CEP inválido!'),
+
+                            _shouldSetState = true;
+                            if ((_model.respDaConsultaViaCep?.succeeded ??
+                                true)) {
+                              safeSetState(() {
+                                _model.tfRuaTextController?.text =
+                                    BuscapCepCall.rua(
+                                  (_model.respDaConsultaViaCep?.jsonBody ?? ''),
+                                )!;
+                              });
+                              safeSetState(() {
+                                _model.tfBairroTextController?.text =
+                                    BuscapCepCall.bairro(
+                                  (_model.respDaConsultaViaCep?.jsonBody ?? ''),
+                                )!;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Text(
-                                      'Por favor, cadastre novamente seu endereço.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
+                                    'CEP Válido!',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor: Color(0xC8607744),
+                                ),
+                              );
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: ElementoErroCEPWidget(),
+                                    ),
+                                  );
+                                },
+                              );
 
-                          if (_shouldSetState) safeSetState(() {});
-                        },
-                      ),
-                      autofocus: false,
-                      enabled: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        labelText: 'CEP',
-                        labelStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  font: GoogleFonts.inter(
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+
+                            if (_shouldSetState) safeSetState(() {});
+                          },
+                        ),
+                        autofocus: false,
+                        enabled: true,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          labelText: 'CEP',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .fontWeight,
@@ -215,17 +230,17 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                        hintStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  font: GoogleFonts.inter(
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .fontWeight,
@@ -233,68 +248,68 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(15.0),
+                              bottomLeft: Radius.circular(15.0),
+                              bottomRight: Radius.circular(15.0),
+                            ),
                           ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(15.0),
+                              bottomLeft: Radius.circular(15.0),
+                              bottomRight: Radius.circular(15.0),
+                            ),
                           ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(15.0),
+                              bottomLeft: Radius.circular(15.0),
+                              bottomRight: Radius.circular(15.0),
+                            ),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(15.0),
+                              bottomLeft: Radius.circular(15.0),
+                              bottomRight: Radius.circular(15.0),
+                            ),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                          ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                          ),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                          ),
-                        ),
-                        filled: true,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.inter(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .fontWeight,
@@ -302,18 +317,11 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                      cursorColor: FlutterFlowTheme.of(context).primaryText,
-                      enableInteractiveSelection: true,
-                      validator: _model.tfCepTextControllerValidator
-                          .asValidator(context),
+                        cursorColor: FlutterFlowTheme.of(context).primaryText,
+                        enableInteractiveSelection: true,
+                        validator: _model.tfCepTextControllerValidator
+                            .asValidator(context),
+                      ),
                     ),
                   ),
                 ),
@@ -980,26 +988,17 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 1.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 20.0),
                 child: Container(
                   width: 80.0,
                   height: 80.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40.0),
-                      topRight: Radius.circular(40.0),
-                      bottomLeft: Radius.circular(40.0),
-                      bottomRight: Radius.circular(40.0),
-                    ),
-                    child: Image.asset(
-                      'assets/images/splah_icone.png',
-                      width: 80.0,
-                      height: 80.0,
-                      fit: BoxFit.cover,
-                    ),
+                  child: wrapWithModel(
+                    model: _model.logoRedondaMenorModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: LogoRedondaMenorWidget(),
                   ),
                 ),
               ),

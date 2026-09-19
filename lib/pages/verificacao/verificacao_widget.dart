@@ -1,3 +1,4 @@
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -334,19 +335,10 @@ class _VerificacaoWidgetState extends State<VerificacaoWidget>
                   width: 120.0,
                   height: 120.0,
                   decoration: BoxDecoration(),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60.0),
-                      topRight: Radius.circular(60.0),
-                      bottomLeft: Radius.circular(60.0),
-                      bottomRight: Radius.circular(60.0),
-                    ),
-                    child: Image.asset(
-                      'assets/images/splah_icone.png',
-                      width: 120.0,
-                      height: 120.0,
-                      fit: BoxFit.cover,
-                    ),
+                  child: wrapWithModel(
+                    model: _model.logoRedondaMenorModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: LogoRedondaMenorWidget(),
                   ),
                 ),
               ),

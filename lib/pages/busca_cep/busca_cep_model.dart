@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'busca_cep_widget.dart' show BuscaCepWidget;
@@ -33,9 +34,13 @@ class BuscaCepModel extends FlutterFlowModel<BuscaCepWidget> {
   FocusNode? tfRefFocusNode;
   TextEditingController? tfRefTextController;
   String? Function(BuildContext, String?)? tfRefTextControllerValidator;
+  // Model for LogoRedondaMenor component.
+  late LogoRedondaMenorModel logoRedondaMenorModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    logoRedondaMenorModel = createModel(context, () => LogoRedondaMenorModel());
+  }
 
   @override
   void dispose() {
@@ -56,5 +61,7 @@ class BuscaCepModel extends FlutterFlowModel<BuscaCepWidget> {
 
     tfRefFocusNode?.dispose();
     tfRefTextController?.dispose();
+
+    logoRedondaMenorModel.dispose();
   }
 }

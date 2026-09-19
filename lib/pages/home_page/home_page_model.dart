@@ -1,3 +1,4 @@
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'home_page_widget.dart' show HomePageWidget;
@@ -21,9 +22,13 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // Model for LogoRedondaMenor component.
+  late LogoRedondaMenorModel logoRedondaMenorModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    logoRedondaMenorModel = createModel(context, () => LogoRedondaMenorModel());
+  }
 
   @override
   void dispose() {
@@ -33,5 +38,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
+
+    logoRedondaMenorModel.dispose();
   }
 }

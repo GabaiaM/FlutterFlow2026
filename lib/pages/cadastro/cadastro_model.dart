@@ -1,3 +1,4 @@
+import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'cadastro_widget.dart' show CadastroWidget;
@@ -6,45 +7,51 @@ import 'package:flutter/material.dart';
 class CadastroModel extends FlutterFlowModel<CadastroWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
+  // State field(s) for TFNOME widget.
+  FocusNode? tfnomeFocusNode;
+  TextEditingController? tfnomeTextController;
+  String? Function(BuildContext, String?)? tfnomeTextControllerValidator;
+  // State field(s) for TFEMAIL widget.
+  FocusNode? tfemailFocusNode;
+  TextEditingController? tfemailTextController;
+  String? Function(BuildContext, String?)? tfemailTextControllerValidator;
+  // State field(s) for TFCPF widget.
+  FocusNode? tfcpfFocusNode;
+  TextEditingController? tfcpfTextController;
+  String? Function(BuildContext, String?)? tfcpfTextControllerValidator;
+  // State field(s) for TFCELULAR widget.
+  FocusNode? tfcelularFocusNode;
+  TextEditingController? tfcelularTextController;
+  String? Function(BuildContext, String?)? tfcelularTextControllerValidator;
+  // State field(s) for TFSENHA widget.
+  FocusNode? tfsenhaFocusNode;
+  TextEditingController? tfsenhaTextController;
+  String? Function(BuildContext, String?)? tfsenhaTextControllerValidator;
+  // Model for LogoRedondaMenor component.
+  late LogoRedondaMenorModel logoRedondaMenorModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    logoRedondaMenorModel = createModel(context, () => LogoRedondaMenorModel());
+  }
 
   @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    tfnomeFocusNode?.dispose();
+    tfnomeTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    tfemailFocusNode?.dispose();
+    tfemailTextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    textController3?.dispose();
+    tfcpfFocusNode?.dispose();
+    tfcpfTextController?.dispose();
 
-    textFieldFocusNode4?.dispose();
-    textController4?.dispose();
+    tfcelularFocusNode?.dispose();
+    tfcelularTextController?.dispose();
 
-    textFieldFocusNode5?.dispose();
-    textController5?.dispose();
+    tfsenhaFocusNode?.dispose();
+    tfsenhaTextController?.dispose();
+
+    logoRedondaMenorModel.dispose();
   }
 }
