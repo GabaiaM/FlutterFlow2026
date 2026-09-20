@@ -11,10 +11,10 @@ class CadastroModel extends FlutterFlowModel<CadastroWidget> {
   FocusNode? tfnomeFocusNode;
   TextEditingController? tfnomeTextController;
   String? Function(BuildContext, String?)? tfnomeTextControllerValidator;
-  // State field(s) for TFEMAIL widget.
-  FocusNode? tfemailFocusNode;
-  TextEditingController? tfemailTextController;
-  String? Function(BuildContext, String?)? tfemailTextControllerValidator;
+  // State field(s) for TFEMAILcad widget.
+  FocusNode? tFEMAILcadFocusNode;
+  TextEditingController? tFEMAILcadTextController;
+  String? Function(BuildContext, String?)? tFEMAILcadTextControllerValidator;
   // State field(s) for TFCPF widget.
   FocusNode? tfcpfFocusNode;
   TextEditingController? tfcpfTextController;
@@ -40,8 +40,8 @@ class CadastroModel extends FlutterFlowModel<CadastroWidget> {
     tfnomeFocusNode?.dispose();
     tfnomeTextController?.dispose();
 
-    tfemailFocusNode?.dispose();
-    tfemailTextController?.dispose();
+    tFEMAILcadFocusNode?.dispose();
+    tFEMAILcadTextController?.dispose();
 
     tfcpfFocusNode?.dispose();
     tfcpfTextController?.dispose();

@@ -14,14 +14,14 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TFEMAIL widget.
+  FocusNode? tfemailFocusNode;
+  TextEditingController? tfemailTextController;
+  String? Function(BuildContext, String?)? tfemailTextControllerValidator;
+  // State field(s) for TFSENHA widget.
+  FocusNode? tfsenhaFocusNode;
+  TextEditingController? tfsenhaTextController;
+  String? Function(BuildContext, String?)? tfsenhaTextControllerValidator;
   // Model for LogoRedondaMenor component.
   late LogoRedondaMenorModel logoRedondaMenorModel;
 
@@ -33,11 +33,11 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   @override
   void dispose() {
     tabBarController?.dispose();
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    tfemailFocusNode?.dispose();
+    tfemailTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    tfsenhaFocusNode?.dispose();
+    tfsenhaTextController?.dispose();
 
     logoRedondaMenorModel.dispose();
   }

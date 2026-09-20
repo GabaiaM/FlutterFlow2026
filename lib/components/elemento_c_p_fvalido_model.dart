@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'elemento_aviso_verde_widget.dart' show ElementoAvisoVerdeWidget;
+import 'elemento_c_p_fvalido_widget.dart' show ElementoCPFvalidoWidget;
 import 'package:flutter/material.dart';
 
-class ElementoAvisoVerdeModel
-    extends FlutterFlowModel<ElementoAvisoVerdeWidget> {
+class ElementoCPFvalidoModel extends FlutterFlowModel<ElementoCPFvalidoWidget> {
   @override
   void initState(BuildContext context) {}
 

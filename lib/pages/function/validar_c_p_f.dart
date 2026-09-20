@@ -2,7 +2,7 @@
 
 /// Função para validar o CPF
 bool validarCPF(String cpf) {
-// Remover caracteres indesejados vv
+// Remover caracteres indesejados vvv
 
   cpf = cpf.replaceAll(RegExp(r'[^\d]'), '');
   //Remover hífen "-" e ponto "."

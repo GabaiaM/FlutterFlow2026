@@ -12,7 +12,7 @@ class BuscaCepModel extends FlutterFlowModel<BuscaCepWidget> {
   FocusNode? tfCepFocusNode;
   TextEditingController? tfCepTextController;
   String? Function(BuildContext, String?)? tfCepTextControllerValidator;
-  // Stores action output result for [Backend Call - API (BuscapCep)] action in TF_CEP widget.
+  // Stores action output result for [Backend Call - API (BUSCACEP)] action in TF_CEP widget.
   ApiCallResponse? respDaConsultaViaCep;
   // State field(s) for TF_RUA widget.
   FocusNode? tfRuaFocusNode;

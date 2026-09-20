@@ -1,4 +1,4 @@
-import '/components/elemento_aviso_verde_widget.dart';
+import '/components/elemento_c_p_fvalido_widget.dart';
 import '/components/elemento_erro_c_p_f_widget.dart';
 import '/components/logo_redonda_menor_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -34,8 +34,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
     _model.tfnomeTextController ??= TextEditingController();
     _model.tfnomeFocusNode ??= FocusNode();
 
-    _model.tfemailTextController ??= TextEditingController();
-    _model.tfemailFocusNode ??= FocusNode();
+    _model.tFEMAILcadTextController ??= TextEditingController();
+    _model.tFEMAILcadFocusNode ??= FocusNode();
 
     _model.tfcpfTextController ??= TextEditingController();
     _model.tfcpfFocusNode ??= FocusNode();
@@ -227,8 +227,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   child: Container(
                     width: 200.0,
                     child: TextFormField(
-                      controller: _model.tfemailTextController,
-                      focusNode: _model.tfemailFocusNode,
+                      controller: _model.tFEMAILcadTextController,
+                      focusNode: _model.tFEMAILcadFocusNode,
                       autofocus: false,
                       enabled: true,
                       obscureText: false,
@@ -322,7 +322,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       enableInteractiveSelection: true,
-                      validator: _model.tfemailTextControllerValidator
+                      validator: _model.tFEMAILcadTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
@@ -479,7 +479,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                     FocusManager.instance.primaryFocus
                                         ?.unfocus();
                                   },
-                                  child: ElementoAvisoVerdeWidget(),
+                                  child: ElementoCPFvalidoWidget(),
                                 ),
                               );
                             },
@@ -518,18 +518,15 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
+                                  fontSize: 30.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
+                                  fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontStyle,

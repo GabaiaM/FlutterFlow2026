@@ -288,7 +288,7 @@ class _VerificacaoWidgetState extends State<VerificacaoWidget>
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFFF1F0EE),
+                                        color: Color(0xFF65784F),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -302,7 +302,7 @@ class _VerificacaoWidgetState extends State<VerificacaoWidget>
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF795C46),
+                                              color: Color(0xFFFFFAFA),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)

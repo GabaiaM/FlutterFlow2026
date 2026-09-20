@@ -36,11 +36,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.tfemailTextController ??= TextEditingController();
+    _model.tfemailFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.tfsenhaTextController ??= TextEditingController();
+    _model.tfsenhaFocusNode ??= FocusNode();
   }
 
   @override
@@ -328,8 +328,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
-                                          controller: _model.textController1,
-                                          focusNode: _model.textFieldFocusNode1,
+                                          controller:
+                                              _model.tfemailTextController,
+                                          focusNode: _model.tfemailFocusNode,
                                           autofocus: false,
                                           enabled: true,
                                           obscureText: false,
@@ -466,7 +467,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   .primaryText,
                                           enableInteractiveSelection: true,
                                           validator: _model
-                                              .textController1Validator
+                                              .tfemailTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -477,8 +478,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
-                                          controller: _model.textController2,
-                                          focusNode: _model.textFieldFocusNode2,
+                                          controller:
+                                              _model.tfsenhaTextController,
+                                          focusNode: _model.tfsenhaFocusNode,
                                           autofocus: false,
                                           enabled: true,
                                           obscureText: false,
@@ -613,7 +615,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   .primaryText,
                                           enableInteractiveSelection: true,
                                           validator: _model
-                                              .textController2Validator
+                                              .tfsenhaTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),

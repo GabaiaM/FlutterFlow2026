@@ -2,19 +2,19 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'elemento_aviso_verde_model.dart';
-export 'elemento_aviso_verde_model.dart';
+import 'elemento_c_p_fvalido_model.dart';
+export 'elemento_c_p_fvalido_model.dart';
 
-class ElementoAvisoVerdeWidget extends StatefulWidget {
-  const ElementoAvisoVerdeWidget({super.key});
+class ElementoCPFvalidoWidget extends StatefulWidget {
+  const ElementoCPFvalidoWidget({super.key});
 
   @override
-  State<ElementoAvisoVerdeWidget> createState() =>
-      _ElementoAvisoVerdeWidgetState();
+  State<ElementoCPFvalidoWidget> createState() =>
+      _ElementoCPFvalidoWidgetState();
 }
 
-class _ElementoAvisoVerdeWidgetState extends State<ElementoAvisoVerdeWidget> {
-  late ElementoAvisoVerdeModel _model;
+class _ElementoCPFvalidoWidgetState extends State<ElementoCPFvalidoWidget> {
+  late ElementoCPFvalidoModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -25,7 +25,7 @@ class _ElementoAvisoVerdeWidgetState extends State<ElementoAvisoVerdeWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ElementoAvisoVerdeModel());
+    _model = createModel(context, () => ElementoCPFvalidoModel());
   }
 
   @override

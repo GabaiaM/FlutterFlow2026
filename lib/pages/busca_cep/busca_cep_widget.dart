@@ -143,7 +143,7 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                                   _model.tfCepTextController.text;
                             });
                             _model.respDaConsultaViaCep =
-                                await BuscapCepCall.call(
+                                await BuscacepCall.call(
                               cep: _model.tfCepTextController.text,
                             );
 
@@ -152,27 +152,28 @@ class _BuscaCepWidgetState extends State<BuscaCepWidget> {
                                 true)) {
                               safeSetState(() {
                                 _model.tfRuaTextController?.text =
-                                    BuscapCepCall.rua(
+                                    BuscacepCall.logradouro(
                                   (_model.respDaConsultaViaCep?.jsonBody ?? ''),
                                 )!;
                               });
                               safeSetState(() {
                                 _model.tfBairroTextController?.text =
-                                    BuscapCepCall.bairro(
+                                    BuscacepCall.bairro(
                                   (_model.respDaConsultaViaCep?.jsonBody ?? ''),
                                 )!;
                               });
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'CEP Válido!',
+                                    'CEP Validado!',
                                     style: TextStyle(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                   duration: Duration(milliseconds: 4000),
-                                  backgroundColor: Color(0xC8607744),
+                                  backgroundColor: Color(0xFF607744),
                                 ),
                               );
                               if (_shouldSetState) safeSetState(() {});

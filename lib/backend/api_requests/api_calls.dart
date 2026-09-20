@@ -8,12 +8,12 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class BuscapCepCall {
+class BuscacepCall {
   static Future<ApiCallResponse> call({
     String? cep = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'BuscapCep',
+      callName: 'BUSCACEP',
       apiUrl: 'viacep.com.br/ws/${cep}/json/',
       callType: ApiCallType.GET,
       headers: {},
@@ -27,7 +27,8 @@ class BuscapCepCall {
     );
   }
 
-  static String? rua(dynamic response) => castToType<String>(getJsonField(
+  static String? logradouro(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.logradouro''',
       ));
@@ -35,13 +36,13 @@ class BuscapCepCall {
         response,
         r'''$.bairro''',
       ));
-  static String? cidade(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.localidade''',
-      ));
   static String? uf(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.uf''',
+      ));
+  static String? estado(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.estado''',
       ));
 }
 
